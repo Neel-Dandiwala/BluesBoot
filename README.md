@@ -32,6 +32,20 @@ npm run dev
 npm run build
 ```
 
+## Beehiiv Integration
+
+This site integrates with Beehiiv for newsletter subscriptions. To set up the integration:
+
+1. Create a `.env` file in the root directory with the following variables:
+   ```
+   VITE_BEEHIIV_PUBLICATION_ID=your_publication_id_here
+   VITE_BEEHIIV_FORM_URL=https://embeds.beehiiv.com/subscribe
+   ```
+
+2. Replace `your_publication_id_here` with your actual Beehiiv publication ID.
+
+3. After making changes, rebuild the project with `npm run build`.
+
 ## Deployment
 
 This site is deployed at [https://bluesboot.com](https://bluesboot.com).

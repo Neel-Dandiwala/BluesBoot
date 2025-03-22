@@ -241,13 +241,17 @@ const headerStyle = computed(() => {
               <p>Join our community of tech professionals and receive our weekly digest.</p>
             </AnimatedElement>
             
-            <AnimatedElement animation="slide-up" :delay="200" hover hoverEffect="glow">
-              <form class="subscribe-form">
-                <div class="form-input-container">
-                  <input type="email" placeholder="Your email address" required />
-                </div>
-                <button type="submit" class="primary-button">Subscribe</button>
-              </form>
+            <AnimatedElement animation="slide-up" :delay="200">
+              <div class="beehiiv-embed-container">
+                <iframe 
+                  src="https://embeds.beehiiv.com/452e161b-3487-4578-8cda-84afb6cb8f73?slim=true" 
+                  data-test-id="beehiiv-embed" 
+                  height="52" 
+                  frameborder="0" 
+                  scrolling="no" 
+                  style="margin: 0; padding: 0; border-radius: 0px !important; background-color: white; width: 100%; display: block;"
+                ></iframe>
+              </div>
             </AnimatedElement>
             
             <AnimatedElement animation="fade" :delay="400">
@@ -305,7 +309,7 @@ const headerStyle = computed(() => {
 
 body {
   margin: 0;
-  font-family: 'Future MD BT', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: 'Future MT BD', 'Futura MD BT', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: var(--text-dark);
@@ -360,7 +364,7 @@ header {
 }
 
 .logo-text {
-  font-family: 'Futura MD BT', Montserrat, sans-serif;
+  font-family: 'Future MT BD', 'Futura MD BT', Montserrat, sans-serif;
   font-size: 24px;
   font-weight: 600;
   color: var(--primary-color);
@@ -1033,6 +1037,59 @@ footer::after {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+}
+
+.success-message {
+  color: #00a86b;
+  margin-top: 12px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.error-message {
+  color: #e74c3c;
+  margin-top: 12px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.beehiiv-embed-container {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: var(--white);
+  padding: 0;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+  position: relative;
+  z-index: 1;
+  border: 1px solid var(--border-light);
+}
+
+.beehiiv-embed-container:hover {
+  box-shadow: 0 0 20px rgba(0, 191, 254, 0.3);
+  border-color: rgba(0, 191, 254, 0.2);
+}
+
+.beehiiv-embed-container iframe {
+  display: block;
+  position: relative;
+  width: 100%;
+  background-color: white;
+  z-index: 2;
+}
+
+/* Remove the hover-glow class since we're using direct hover on the container */
+.hover-glow.hovering .beehiiv-embed-container {
+  /* This is now handled directly in the beehiiv-embed-container:hover */
+}
+
+/* Add a special style for mobile */
+@media (max-width: 768px) {
+  .beehiiv-embed-container {
+    max-width: 100%;
   }
 }
 </style>
