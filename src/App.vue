@@ -114,7 +114,7 @@ const headerStyle = computed(() => {
               </AnimatedElement>
               
               <AnimatedElement animation="slide-right" :delay="800">
-                <p class="subtitle">A curated weekly digest of tech news, hackathons, life stories, and career opportunities.</p>
+                <p class="subtitle">Curated content of tech news, hackathons, life stories, and career opportunities.</p>
               </AnimatedElement>
               
               <AnimatedElement animation="scale" :delay="1000">
@@ -242,16 +242,7 @@ const headerStyle = computed(() => {
             </AnimatedElement>
             
             <AnimatedElement animation="slide-up" :delay="200">
-              <div class="beehiiv-embed-container">
-                <iframe 
-                  src="https://embeds.beehiiv.com/452e161b-3487-4578-8cda-84afb6cb8f73?slim=true" 
-                  data-test-id="beehiiv-embed" 
-                  height="52" 
-                  frameborder="0" 
-                  scrolling="no" 
-                  style="margin: 0; padding: 0; border-radius: 0px !important; background-color: white; width: 100%; display: block;"
-                ></iframe>
-              </div>
+              <iframe src="https://embeds.beehiiv.com/452e161b-3487-4578-8cda-84afb6cb8f73?slim=true" data-test-id="beehiiv-embed" height="52" frameborder="0" scrolling="no" style="margin: 0; border-radius: 0px !important; background-color: transparent;"></iframe>
             </AnimatedElement>
             
             <AnimatedElement animation="fade" :delay="400">

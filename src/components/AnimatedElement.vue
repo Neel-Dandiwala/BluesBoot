@@ -46,10 +46,12 @@ const isHovering = ref(false);
 
 // Animation styles based on props
 const animationStyle = computed(() => {
-  return {
+  const style = {
     '--animation-delay': `${props.delay}ms`,
     '--animation-duration': `${props.duration}ms`
   };
+  
+  return style;
 });
 
 // Initial animation class based on type
@@ -117,8 +119,7 @@ const handleMouseLeave = () => {
     @mouseenter="handleMouseEnter"
     @mouseleave="handleMouseLeave"
   >
-    <!-- Simplified slot usage to prevent null errors -->
-    <slot />
+    <slot></slot>
   </div>
 </template>
 
