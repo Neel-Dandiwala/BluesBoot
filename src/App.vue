@@ -266,15 +266,34 @@ const headerStyle = computed(() => {
           
           <AnimatedElement animation="slide-up" :delay="200">
             <div class="footer-links">
-              <a href="#">Privacy</a>
-              <a href="#">Terms</a>
-              <a href="#">Contact</a>
+              <a href="https://www.linkedin.com/company/blues-boot" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                  <rect x="2" y="9" width="4" height="12"></rect>
+                  <circle cx="4" cy="4" r="2"></circle>
+                </svg>
+              </a>
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                </svg>
+              </a>
+              <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M9 12a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"></path>
+                  <path d="M15 8c0-2.5-1-4-4-4h-2v8"></path>
+                  <path d="M15 7c1 .8 2 1.2 3 1.2h2v1.8c-.6.1-1.2.2-1.8.3"></path>
+                  <path d="M18 11v-1c-1 0-2-.4-3-1.2-.7-.6-1-1.3-1-2v-4"></path>
+                </svg>
+              </a>
             </div>
           </AnimatedElement>
           
           <AnimatedElement animation="slide-up" :delay="300">
-            <div class="footer-copyright">
-              &copy; 2025 Blues Boot. All rights reserved.
+            <div class="copyright">
+              &copy; 2022-2024 Blues Boot. All rights reserved.
             </div>
           </AnimatedElement>
         </div>
@@ -624,10 +643,10 @@ section:nth-child(even) {
 }
 
 .feature-card h3 {
-  font-size: 20px;
-  margin-bottom: 16px;
-  color: var(--text-dark);
+  font-size: 22px;
   font-weight: 600;
+  margin-bottom: 12px;
+  color: var(--text-dark);
 }
 
 .feature-card p {
@@ -881,35 +900,28 @@ footer::after {
 .footer-links {
   display: flex;
   gap: 32px;
+  margin-bottom: 8px;
 }
 
 .footer-links a {
   text-decoration: none;
   color: var(--white);
-  font-size: 14px;
   transition: var(--transition);
   opacity: 0.9;
-  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 .footer-links a:hover {
   color: var(--white);
   opacity: 1;
-}
-
-.footer-links a::after {
-  content: '';
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-  width: 0;
-  height: 1px;
-  background-color: var(--white);
-  transition: var(--transition);
-}
-
-.footer-links a:hover::after {
-  width: 100%;
+  transform: translateY(-3px);
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
 .footer-copyright {
@@ -1045,41 +1057,35 @@ footer::after {
   text-align: center;
 }
 
-.beehiiv-embed-container {
+.beehiiv-container {
   width: 100%;
-  max-width: 500px;
-  margin: 0 auto;
-  border-radius: 8px;
-  overflow: hidden;
-  background-color: var(--white);
   padding: 0;
-  transition: box-shadow 0.3s ease, border-color 0.3s ease;
-  position: relative;
-  z-index: 1;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+  background-color: var(--white);
   border: 1px solid var(--border-light);
+  line-height: 0;
 }
 
-.beehiiv-embed-container:hover {
-  box-shadow: 0 0 20px rgba(0, 191, 254, 0.3);
-  border-color: rgba(0, 191, 254, 0.2);
-}
-
-.beehiiv-embed-container iframe {
-  display: block;
-  position: relative;
-  width: 100%;
-  background-color: white;
-  z-index: 2;
+iframe[data-test-id="beehiiv-embed"] {
+  width: 100% !important;
+  min-width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  display: block !important;
+  border: none !important;
+  overflow: hidden !important;
 }
 
 /* Remove the hover-glow class since we're using direct hover on the container */
-.hover-glow.hovering .beehiiv-embed-container {
-  /* This is now handled directly in the beehiiv-embed-container:hover */
+.hover-glow.hovering .beehiiv-container {
+  /* This is now handled directly in the beehiiv-container:hover */
 }
 
 /* Add a special style for mobile */
 @media (max-width: 768px) {
-  .beehiiv-embed-container {
+  .beehiiv-container {
     max-width: 100%;
   }
 }
