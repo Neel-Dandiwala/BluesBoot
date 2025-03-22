@@ -79,15 +79,17 @@ const headerStyle = computed(() => {
 
 <template>
   <div class="app">
-    <BackgroundEffect />
     <ScrollToTop />
     
     <header :style="headerStyle">
       <div class="container">
         <div class="nav-container">
           <AnimatedElement animation="slide-right" :delay="200" :triggerOnScroll="false">
-            <div class="logo">
-              <img src="@/assets/blues_boot_blue.png" alt="Blues Boot" />
+            <div class="logo-container">
+              <div class="logo">
+                <img src="/blues_boot_blue.png" alt="Blues Boot" />
+              </div>
+              <div class="logo-text">Blues Boot</div>
             </div>
           </AnimatedElement>
           
@@ -105,20 +107,26 @@ const headerStyle = computed(() => {
     <main>
       <section class="hero">
         <div class="container">
-          <div class="hero-content">
-            <AnimatedElement animation="slide-up" :delay="600">
-              <h1>Inspiration to <span class="accent">boot up</span> your blues</h1>
-            </AnimatedElement>
+          <div class="hero-grid">
+            <div class="hero-text">
+              <AnimatedElement animation="slide-right" :delay="600">
+                <h1>Inspiration to <span class="accent">boot up</span> your blues</h1>
+              </AnimatedElement>
+              
+              <AnimatedElement animation="slide-right" :delay="800">
+                <p class="subtitle">A curated weekly digest of tech news, hackathons, life stories, and career opportunities.</p>
+              </AnimatedElement>
+              
+              <AnimatedElement animation="scale" :delay="1000">
+                <div class="cta-container">
+                  <a href="#subscribe" @click="(e) => scrollToAnchor(e, 'subscribe')" class="primary-button pulse-animation">Subscribe Now</a>
+                </div>
+              </AnimatedElement>
+            </div>
             
-            <AnimatedElement animation="slide-up" :delay="800">
-              <p class="subtitle">A curated weekly digest of tech news, hackathons, life stories, and career opportunities.</p>
-            </AnimatedElement>
-            
-            <AnimatedElement animation="scale" :delay="1000">
-              <div class="cta-container">
-                <a href="#subscribe" @click="(e) => scrollToAnchor(e, 'subscribe')" class="primary-button pulse-animation">Subscribe Now</a>
-              </div>
-            </AnimatedElement>
+            <div class="hero-model">
+              <BackgroundEffect />
+            </div>
           </div>
         </div>
       </section>
@@ -257,7 +265,7 @@ const headerStyle = computed(() => {
         <div class="footer-content">
           <AnimatedElement animation="slide-up" :delay="100">
             <div class="footer-logo">
-              <img src="@/assets/blues_boot_white.png" alt="Blues Boot" />
+              <img src="/blues_boot_white.png" alt="Blues Boot" />
             </div>
           </AnimatedElement>
           
@@ -335,6 +343,12 @@ header {
   align-items: center;
 }
 
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
 .logo {
   display: flex;
   align-items: center;
@@ -343,6 +357,14 @@ header {
 .logo img {
   height: 40px;
   width: auto;
+}
+
+.logo-text {
+  font-family: 'Futura MD BT', Montserrat, sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--primary-color);
+  letter-spacing: -0.02em;
 }
 
 nav {
@@ -400,66 +422,99 @@ section:nth-child(even) {
 }
 
 .hero {
-  padding: 140px 0 100px;
-  background-color: var(--white);
   position: relative;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  padding: 120px 0 80px;
+  background-color: var(--white);
   overflow: hidden;
 }
 
-.hero::before {
-  content: '';
-  position: absolute;
-  top: -100px;
-  right: -100px;
-  width: 400px;
-  height: 400px;
-  background: var(--primary-light);
-  border-radius: 50%;
-  z-index: 0;
-  opacity: 0.6;
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 40px;
 }
 
-.hero-content {
-  max-width: 800px;
-  margin: 0 auto;
-  text-align: center;
+.hero-text {
+  text-align: left;
+  max-width: 600px;
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
 
-h1 {
-  font-size: 56px;
+.hero-text h1 {
+  font-size: 58px;
   font-weight: 800;
   line-height: 1.1;
   margin-bottom: 24px;
   color: var(--text-dark);
   letter-spacing: -1px;
+  position: relative;
+}
+
+.hero-text h1::before {
+  content: '';
+  position: absolute;
+  height: 10px;
+  width: 50px;
+  background: var(--primary-color);
+  top: -20px;
+  left: 0;
+  border-radius: 5px;
+}
+
+.hero-text .subtitle {
+  font-size: 20px;
+  color: var(--text-medium);
+  line-height: 1.6;
+  margin-bottom: 40px;
+  max-width: 500px;
+  text-align: left;
+  position: relative;
+  padding-left: 20px;
+  border-left: 3px solid var(--primary-light);
+}
+
+.hero-model {
+  position: relative;
+  height: 500px;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: none;
+  background: #ffffff;
+  min-width: 400px;
+  max-width: 600px;
+  margin-left: auto;
+}
+
+.hero .cta-container {
+  justify-content: flex-start;
+  margin-top: 32px;
 }
 
 .accent {
   color: var(--primary-color);
   position: relative;
+  font-weight: 900;
 }
 
 .accent::after {
   content: '';
   position: absolute;
-  bottom: 0;
+  bottom: 5px;
   left: 0;
   width: 100%;
-  height: 8px;
+  height: 10px;
   background-color: var(--primary-light);
   z-index: -1;
-}
-
-.subtitle {
-  font-size: 20px;
-  color: var(--text-medium);
-  line-height: 1.6;
-  margin-bottom: 40px;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
+  border-radius: 4px;
 }
 
 .cta-container {
@@ -906,12 +961,23 @@ footer::after {
     margin-bottom: 40px;
   }
   
-  h1 {
-    font-size: 40px;
+  .hero-text h1 {
+    font-size: 42px;
   }
   
-  .subtitle {
-    font-size: 18px;
+  .hero-text h1::before {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .hero-text .subtitle {
+    text-align: center;
+    padding-left: 0;
+    border-left: none;
+    padding-bottom: 20px;
+    border-bottom: 3px solid var(--primary-light);
+    margin-left: auto;
+    margin-right: auto;
   }
   
   .subscribe-form {
@@ -932,6 +998,31 @@ footer::after {
   
   nav {
     gap: 20px;
+  }
+  
+  .hero-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .hero-text {
+    text-align: center;
+    order: 1;
+  }
+  
+  .hero-model {
+    order: 0;
+    height: 350px;
+    min-width: unset;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+  
+  .hero .cta-container {
+    justify-content: center;
+  }
+  
+  .logo-text {
+    font-size: 20px;
   }
 }
 
