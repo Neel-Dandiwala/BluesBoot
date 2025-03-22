@@ -13,18 +13,21 @@ export default defineConfig({
   base: './',
   resolve: {
     alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url)),
-      'vue': 'vue/dist/vue.esm-bundler.js'
+      '@': fileURLToPath(new URL('./src', import.meta.url))
     },
   },
   build: {
-    outDir: 'dist',
+    outDir: './',
+    emptyOutDir: false,
     assetsDir: 'assets',
     minify: true,
     sourcemap: false,
     rollupOptions: {
       output: {
-        manualChunks: undefined
+        manualChunks: undefined,
+        entryFileNames: 'assets/[name]-[hash].js',
+        chunkFileNames: 'assets/[name]-[hash].js',
+        assetFileNames: 'assets/[name]-[hash].[ext]'
       }
     }
   }
