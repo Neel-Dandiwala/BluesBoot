@@ -3,6 +3,8 @@ import { onMounted, ref, onBeforeUnmount, computed } from 'vue'
 import BackgroundEffect from './components/BackgroundEffect.vue';
 import AnimatedElement from './components/AnimatedElement.vue';
 import ScrollToTop from './components/ScrollToTop.vue';
+import bluesBootBlueLogo from '../public/blues_boot_blue.png';
+import bluesBootWhiteLogo from '../public/blues_boot_white.png';
 
 // Scroll position reactive reference
 const scrollY = ref(0);
@@ -75,6 +77,10 @@ const headerStyle = computed(() => {
     boxShadow: scrollY.value > 50 ? '0 4px 20px rgba(0, 0, 0, 0.05)' : 'none'
   };
 });
+
+// Add logos to the template refs
+const blueLogo = bluesBootBlueLogo;
+const whiteLogo = bluesBootWhiteLogo;
 </script>
 
 <template>
@@ -87,7 +93,7 @@ const headerStyle = computed(() => {
           <AnimatedElement animation="slide-right" :delay="200" :triggerOnScroll="false">
             <div class="logo-container">
               <div class="logo">
-                <img src="blues_boot_blue.png" alt="Blues Boot" />
+                <img :src="blueLogo" alt="Blues Boot" />
               </div>
               <div class="logo-text">Blues Boot</div>
             </div>
@@ -260,7 +266,7 @@ const headerStyle = computed(() => {
         <div class="footer-content">
           <AnimatedElement animation="slide-up" :delay="100">
             <div class="footer-logo">
-              <img src="blues_boot_white.png" alt="Blues Boot" />
+              <img :src="whiteLogo" alt="Blues Boot" />
             </div>
           </AnimatedElement>
           

@@ -7,6 +7,9 @@ const canvasRef = ref(null);
 let scene, camera, renderer, logoModel;
 let animationId = null;
 
+// Model path as a constant - this assumes the file is in the public folder
+const MODEL_PATH = new URL('/models/logo.gltf', import.meta.url).href;
+
 // Initialize Three.js scene
 function initThree() {
   // Scene setup
@@ -77,7 +80,7 @@ function addLights() {
 function loadLogoModel() {
   const loader = new GLTFLoader();
   
-  loader.load('models/logo.gltf', (gltf) => {
+  loader.load(MODEL_PATH, (gltf) => {
     logoModel = gltf.scene;
     
     // Center the model
