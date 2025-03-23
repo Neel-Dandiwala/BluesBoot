@@ -87,7 +87,7 @@ const headerStyle = computed(() => {
           <AnimatedElement animation="slide-right" :delay="200" :triggerOnScroll="false">
             <div class="logo-container">
               <div class="logo">
-                <img src="/blues_boot_blue.png" alt="Blues Boot" />
+                <img src="blues_boot_blue.png" alt="Blues Boot" />
               </div>
               <div class="logo-text">Blues Boot</div>
             </div>
@@ -260,7 +260,7 @@ const headerStyle = computed(() => {
         <div class="footer-content">
           <AnimatedElement animation="slide-up" :delay="100">
             <div class="footer-logo">
-              <img src="/blues_boot_white.png" alt="Blues Boot" />
+              <img src="blues_boot_white.png" alt="Blues Boot" />
             </div>
           </AnimatedElement>
           

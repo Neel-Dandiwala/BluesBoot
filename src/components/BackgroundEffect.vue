@@ -77,7 +77,7 @@ function addLights() {
 function loadLogoModel() {
   const loader = new GLTFLoader();
   
-  loader.load('/models/logo.gltf', (gltf) => {
+  loader.load('models/logo.gltf', (gltf) => {
     logoModel = gltf.scene;
     
     // Center the model
