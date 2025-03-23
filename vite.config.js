@@ -19,12 +19,16 @@ export default defineConfig({
     outDir: 'dist',
     assetsDir: 'assets',
     emptyOutDir: true,
-    // Ensure all dependencies are properly bundled
+    // Ensure proper chunking
     rollupOptions: {
       output: {
         manualChunks: {
           'vue-vendor': ['vue']
-        }
+        },
+        // Ensure proper file paths
+        entryFileNames: 'assets/[name]-[hash].js',
+        chunkFileNames: 'assets/[name]-[hash].js',
+        assetFileNames: 'assets/[name]-[hash].[ext]'
       }
     }
   },
