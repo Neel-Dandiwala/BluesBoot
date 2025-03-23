@@ -9,6 +9,7 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
+      'vue': 'vue/dist/vue.esm-bundler.js'
     },
   },
   // Configure static asset handling
@@ -18,6 +19,14 @@ export default defineConfig({
     outDir: 'dist',
     assetsDir: 'assets',
     emptyOutDir: true,
+    // Ensure all dependencies are properly bundled
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'vue-vendor': ['vue']
+        }
+      }
+    }
   },
   // Configure server options
   server: {
